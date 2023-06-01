@@ -1,7 +1,7 @@
-FROM public.ecr.aws/lambda/nodejs:18
+FROM public.ecr.aws/lambda/python:3.10
 
-COPY app.js package.json  ${LAMBDA_TASK_ROOT}/
+COPY requirements.txt app.py  ${LAMBDA_TASK_ROOT}/
 
-RUN npm install
+RUN pip3 install -r requirements.txt
 
 CMD [ "app.lambda_handler" ]
